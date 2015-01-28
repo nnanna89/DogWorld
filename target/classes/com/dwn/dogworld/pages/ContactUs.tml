@@ -1,0 +1,67 @@
+<html t:type="layout" t:title="DogWorld Nigeria - Home"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+<head>
+<script>
+	function submitContactUs(){
+		//disable the submit button so that user does not click again
+		document.getElementById("submitButton").disabled = true;
+		document.getElementById("contactForm").submit();
+	}
+</script>
+</head>
+      <div class="content">
+                <div class="container">
+
+                    <div class="layout layout-stack-sm layout-main-left">
+
+                        <div class="col-sm-4 col-sm-push-8 layout-sidebar">
+
+                            <div class="well text-center">
+                                <p><i class="fa ion-ios7-help-outline fa-5x text-muted"></i></p>
+                                <h4>Have a Question?</h4>
+                                <p>Ask us any questions concerning our products and services</p>
+                                <a href="javascript:;" class="btn btn-secondary">Get it Answered!</a>
+                            </div> <!-- /.well -->
+                        </div>
+                        <div id="" class="col-sm-8 col-sm-pull-4 layout-main">
+                            <h3 class="t-al-center" style="padding-bottom: 30px;"><span class="fa ion-ios7-lightbulb-outline"></span>&nbsp;CONTACT US </h3>
+                            <form class="form account-form" method="POST" t:type="form" t:id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="">Name</label>
+                                            <input t:type="TextField" t:value="contactName" class="form-control" t:id="contactName" placeholder="" tabindex="2" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="">Subject</label>
+                                            <input t:type="TextField" t:value="subject" class="form-control" t:id="subject" placeholder="e.g Business Inquiry" tabindex="2" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="">Email Address *</label>
+                                    <input t:type="TextField" t:value="contactEmail" t:validate="required,email" class="form-control" t:id="contactUsEmail" placeholder="e.g info@dogworld.com" tabindex="2" />
+                                </div>
+                                <div class="form-group">
+                                    <label  class="">Phone Number *</label>
+                                    <input t:type="TextField" t:value="contactNumber" t:validate="required,regexp" class="form-control" t:id="contactUsNumber" placeholder="e.g 07061632090" tabindex="2" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="textarea-input">Message</label>
+                                    <textarea data-required="true" t:value="message" t:type="TextArea" name="textarea-input" t:id="contactUsMessage" cols="10" rows="2" class="form-control parsley-validated"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-secondary" onclick="javascript:submitContactUs()" id="submitButton">
+                                        Send &nbsp; <i class="fa fa-play-circle"></i>
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+</html>

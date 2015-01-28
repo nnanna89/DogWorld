@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+<head>
+<script>
+	function submitDogRequest(){
+		//disable the submit button so that user does not click again
+		document.getElementById("submitButton").disabled = true;
+		document.getElementById("dogRequestForm").submit();
+	}
+</script>
+</head>
+    <div class="col-sm-6 col-md-5 ">
+                            <form t:type="form" class="form account-form" t:id="dogRequestForm">
+                            	<t:errors />
+                                <div class="row">
+	                                <h3 class="t-al-center">
+		                                Need a dog? Request one. 
+		                            </h3>
+                                    <div class="col-md-6">
+                                        <div class="form-group">  
+                                            <label t:type="label" t:for="requiredBreedSelect">Required Breed*</label>
+                                            <select t:type="select" t:id="requiredBreedSelect" class="form-control parsley-validated" t:blankOption="ALWAYS" t:blankLabel="-Select Breed-" t:validate="required"
+                                            	t:model="breeds" t:value="selectedBreed" t:label="Required Breed" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">  
+                                            <label t:type="label" t:for="requiredGenderSelect">Required Gender*</label>
+                                            <t:select t:type="select" t:id="requiredGenderSelect" class="form-control parsley-validated" 
+                                            	t:value="genderSelect" t:blankOption="NEVER" t:validate="required" t:label="Required Gender"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="dogColor">Color</label>
+                                            <input t:type="TextField" class="form-control" t:id="dogColor" name="dogColor" t:value="dogColor" placeholder="e.g brown"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label t:type="label" t:for="locationSelect">Your Location*</label>
+                                            <select t:type="select" t:id="locationSelect" class="form-control parsley-validated" t:blankOption="ALWAYS" t:blankLabel="-Select Location-"
+                                            	t:model="locations" t:value="selectedLocation" t:validate="required" t:label="Location" />
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="col-md-6">
+                                		<div class="form-group">
+		                                    <label for="contactEmail">Email Address*</label>
+		                                    <input t:type="TextField" t:validate="required,email" t:label="Email Address" class="form-control" t:id="contactEmail" name="home-req-email-fld" value="email" placeholder="e.g info@dogworld.com" />
+		                                </div>
+                                	</div>
+                                	<div class="col-md-6">
+                                		<div class="form-group">
+		                                    <label for="contactPhoneNumber">Phone Number*</label>
+		                                    <input t:type="TextField" t:validate="required,regexp" t:label="Phone Number" class="form-control" t:id="contactPhoneNumber" value="telephone" placeholder="e.g 07061632090" />
+		                                </div>
+                                	</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="requestDescription">Brief Description</label>
+                                    <textarea data-required="true" data-minlength="5" t:value="description" t:type="TextArea" t:id="requestDescription" cols="10" rows="2" class="form-control parsley-validated"></textarea>
+                                </div>
+                                <div class="form-group">
+                               		<t:Kaptcha xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" />
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-secondary" onclick="javascript:submitDogRequest()" id="submitButton">
+                                        Submit Request &nbsp; <i class="fa fa-play-circle"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+</html>
