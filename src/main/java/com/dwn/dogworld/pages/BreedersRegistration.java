@@ -1,7 +1,11 @@
 package com.dwn.dogworld.pages;
 
-import org.apache.tapestry5.SelectModel;
+import java.util.List;
+
+import org.apache.tapestry5.ComponentResources;
+import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
@@ -9,9 +13,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.exception.ConstraintViolationException;
 
 import com.dwn.dogworld.dal.CrudServiceDAO;
-import com.dwn.dogworld.data.Breed;
 import com.dwn.dogworld.entities.Breeder;
-import com.dwn.dogworld.utils.EmailNotifications;
 import com.dwn.dogworld.utils.SendEmail;
 
 /**
@@ -36,34 +38,74 @@ public class BreedersRegistration
 	@Property
 	private String address;
 	
+	@Property
+	private String breedingStartYear;
+	
 	private Breeder breeder;
 	
 	@Inject
 	private CrudServiceDAO crudDao;
 	
+	@Persist
 	@Property
-	private String selectedBreeds;
+	private List<String> selectedBreeds;
 	
-	@Property
-	private SelectModel breeds = new Breed();
+	@Inject
+	private ComponentResources resources;
 	
 	@CommitAfter
 	Object onSuccess(){
 		System.out.println("Selected Breeds: " + selectedBreeds);
-		
+		String[] selectedBreedsArray = null;
+		if(selectedBreeds.size() > 0){
+			selectedBreedsArray = new String[selectedBreeds.size()];
+			int i = 0;
+			for(String breed : selectedBreeds){
+				selectedBreedsArray[i] = breed;
+				i++;
+			}
+		}else{
+			return null; //don't go ahead
+		}
 		try{
-			breeder = new Breeder(contactName, contactEmail, contactNumber, address, null, null);
+			breeder = new Breeder(contactName, contactEmail, contactNumber, address, selectedBreedsArray, null, breedingStartYear);
 			crudDao.create(breeder);
 		}catch(ConstraintViolationException e){
-			System.out.println("");
 			return null;
 		}
-//		SendEmail emailNotification = new SendEmail();
-//		emailNotification.sendCustomerInquiryNotification(customerInquiry);
-//		emailNotification.sendInquiryToAdmin(customerInquiry);
-		System.out.println("Thank you for registering with us. We will begin a short verification process which usually lasts 1-3 days.");
+		
+		System.out.println("------------------Breeder's email address: " + breeder.getEmail());
+		
+		//send email notification to the breeder and admin
+		SendEmail emailNotification = new SendEmail();
+		emailNotification.sendBreederRegistrationNotification(breeder);
+		emailNotification.sendBreederRegistrationNotificationToAdmin(breeder);
+		
+		//discard the values persisted in session
+		resources.discardPersistentFieldChanges();
 		
 		return null;
+	}
+	
+	@Property
+	private String[] commonBreedLines = {"Bull Dog", "Basenji", "Chow Chow", "German Shepherd (Alsatian)",  "Lhasa Apso", "Mastiff", "Pitbull", "Poodle", "Retriever", "Rottweiler", "Others"};
+	
+	public ValueEncoder<String> getValueEncoder(){
+		return new ValueEncoder<String>(){
+
+			@Override
+			public String toClient(String value) {
+				// TODO Auto-generated method stub
+				return value;
+			}
+
+			@Override
+			public String toValue(String clientValue) {
+				// TODO Auto-generated method stub
+				return clientValue;
+			}
+			
+		};
 	}
 	
 }

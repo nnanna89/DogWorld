@@ -16,6 +16,7 @@ public class Breeder {
 	private String address;
 	private String email;
 	private String telephone;
+	private String firstBreedingYear;
 	private String[] breeds;
 	private byte[] logo;
 	
@@ -24,13 +25,14 @@ public class Breeder {
 	}
 	
 	public Breeder(final String name, final String address, final String email, final String telephone,
-			final String[] breeds, final byte[] logo){
+			final String[] breeds, final byte[] logo, final String firstBreedingYear){
 		this.name = name;
 		this.address = address;
 		this.email = email;
 		this.telephone = telephone;
 		this.breeds = breeds;
 		this.logo = logo;
+		this.firstBreedingYear = firstBreedingYear;
 	}
 	
 	/**
@@ -124,6 +126,20 @@ public class Breeder {
 		this.logo = logo;
 	}
 	
+	/**
+	 * @return the firstBreedingYear
+	 */
+	public String getFirstBreedingYear() {
+		return firstBreedingYear;
+	}
+
+	/**
+	 * @param firstBreedingYear the firstBreedingYear to set
+	 */
+	public void setFirstBreedingYear(String firstBreedingYear) {
+		this.firstBreedingYear = firstBreedingYear;
+	}
+
 	@Override
 	public String toString(){
 		return "Breeder(" + name + "," + address + "," + email + "," + telephone + ","

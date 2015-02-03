@@ -9,6 +9,7 @@ import java.util.Set;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.exception.ConstraintViolationException;
 
 /**
  * Hibernate CrudService
@@ -27,7 +28,7 @@ public class HibernateCrudServiceDAO implements CrudServiceDAO {
 
 	public <T> T create(T t) {
 		session.persist(t);
-		session.flush();
+//		session.flush();
 		session.refresh(t);
 		return t;
 	}

@@ -14,6 +14,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.dwn.dogworld.entities.Breeder;
 import com.dwn.dogworld.entities.CustomerInquiry;
 import com.dwn.dogworld.entities.DogRequest;
 
@@ -137,6 +138,35 @@ public class SendEmail implements EmailNotifications {
 		}
 	}
 	
+	public void sendBreederRegistrationNotification(Breeder breeder) {
+		if(session == null)
+			return;
+		Message message = new MimeMessage(session);
+		String messageBody = "Hello!<br>";
+		System.out.println("--------------------------Breeders email: " + breeder.getEmail());
+		try {
+			message.setFrom(new InternetAddress("nnanna.madu@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(breeder.getEmail()));
+			message.setSentDate(new Date());
+			message.setSubject("DogWorld Nigeria: Registration Received");
+			messageBody += "<br>Thank you for registering with us. <br><br>We will run a short verification process which usually lasts a few hours (between 9am and 5pm daily). ";
+			messageBody += "After that, you will be able to upload and advertise your dogs on our platform.<br><br>";
+			messageBody += "Our customer service agent will get in touch with you as soon as we are done with the verification process.<br><br>Thank you";
+			messageBody += Constants.EMAIL_SIGNATURE;
+			message.setContent(messageBody, "text/html; charset=utf-8");
+			Transport.send(message);
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	public void sendInquiryToAdmin(CustomerInquiry inquiry) {
 		if(session == null)
 			return;
@@ -153,6 +183,38 @@ public class SendEmail implements EmailNotifications {
 			messageBody += "Email: <strong>" + inquiry.getContactEmail() + "</strong><br>";
 			messageBody += "Phone Number: <strong>" + inquiry.getContactPhone() + "</strong><br>";
 			messageBody += "Message: <strong>" + inquiry.getMessage() + "</strong><br><hr><br>";
+			messageBody += Constants.EMAIL_SIGNATURE;
+			message.setContent(messageBody, "text/html; charset=utf-8");
+			Transport.send(message);
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void sendBreederRegistrationNotificationToAdmin(Breeder breeder) {
+		if(session == null)
+			return;
+		Message message = new MimeMessage(session);
+		String messageBody = "Hello!<br>";
+		try {
+			message.setFrom(new InternetAddress("nnanna.madu@gmail.com")); 
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("nnanna.madu@gmail.com"));
+			message.setSentDate(new Date());
+			message.setSubject("New Breeder Registration - " + new SimpleDateFormat(Constants.EMAIL_DATE_FORMAT).format(new Date()));
+			messageBody += "<br>The following breeder has registered in the portal, and is pending verification:<br><hr>";
+			messageBody += "Name: <strong>" + breeder.getName() + "</strong><br>";
+			messageBody += "Breeding since: <strong>" + breeder.getFirstBreedingYear() + "</strong><br>";
+			messageBody += "Email: <strong>" + breeder.getEmail() + "</strong><br>";
+			messageBody += "Phone Number: <strong>" + breeder.getTelephone() + "</strong><br>";
+			messageBody += "Address: <strong>" + breeder.getAddress() + "</strong><br>";
+			messageBody += "Breed(s): <strong>" + breeder.getBreeds() + "</strong><br><hr><br>";
 			messageBody += Constants.EMAIL_SIGNATURE;
 			message.setContent(messageBody, "text/html; charset=utf-8");
 			Transport.send(message);

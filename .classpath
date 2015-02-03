@@ -102,7 +102,6 @@
 	<classpathentry kind="var" path="M2_REPO/org/apache/tomcat/annotations-api/6.0.30/annotations-api-6.0.30.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tapestry/tapestry-javadoc/5.3.7/tapestry-javadoc-5.3.7.jar" sourcepath="M2_REPO/org/apache/tapestry/tapestry-javadoc/5.3.7/tapestry-javadoc-5.3.7-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Workspace/JCodes/kaptcha-2.3.jar"/>
 	<classpathentry kind="lib" path="C:/Workspace/JCodes/tapestry-kaptcha-5.3.1.jar"/>
 	<classpathentry kind="output" path="dogworld-war/WEB-INF/classes"/>
