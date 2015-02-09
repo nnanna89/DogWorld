@@ -55,26 +55,21 @@ public class BreedersRegistration
 	
 	@CommitAfter
 	Object onSuccess(){
-		System.out.println("Selected Breeds: " + selectedBreeds);
-		String[] selectedBreedsArray = null;
+		StringBuilder breedString = new StringBuilder();
 		if(selectedBreeds.size() > 0){
-			selectedBreedsArray = new String[selectedBreeds.size()];
-			int i = 0;
 			for(String breed : selectedBreeds){
-				selectedBreedsArray[i] = breed;
-				i++;
+				breedString.append(breed);
+				breedString.append(",");
 			}
 		}else{
 			return null; //don't go ahead
 		}
 		try{
-			breeder = new Breeder(contactName, contactEmail, contactNumber, address, selectedBreedsArray, null, breedingStartYear);
+			breeder = new Breeder(contactName, contactEmail, contactNumber, address, breedString.toString(), null, breedingStartYear);
 			crudDao.create(breeder);
 		}catch(ConstraintViolationException e){
 			return null;
 		}
-		
-		System.out.println("------------------Breeder's email address: " + breeder.getEmail());
 		
 		//send email notification to the breeder and admin
 		SendEmail emailNotification = new SendEmail();

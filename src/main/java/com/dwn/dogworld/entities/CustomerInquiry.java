@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="CustomerInquiry")
+@Table(name="customerInquiry")
 public class CustomerInquiry {
 	private Long id;
 	private String contactName;

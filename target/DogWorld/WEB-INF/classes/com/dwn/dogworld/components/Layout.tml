@@ -39,6 +39,9 @@
 		                <!--<li>
 		                    <a t:type="EventLink" t:event="addDog" href="#"><i class="ion-upload fa fa-md"></i> Register Dog</a>
 		                </li>-->
+		                <li>
+		                    <a t:type="EventLink" t:event="breedersReg" href="#"><i class="ion-android-mail fa fa-mda"></i> Breeders</a>
+		                </li>
 		            </ul>
 		        </nav>
 		    </div>

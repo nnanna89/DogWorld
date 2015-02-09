@@ -83,13 +83,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2 col-xs-4 col-sm-4">
-                                <img class="img-responsive" src="${context:ufd_assets/img/dl.jpg}" width="120px"/>
+                                <img class="img-responsive" src="${context:ufd_assets/img/doglord_kennels.jpg}" width="120px"/>
                             </div>
                             <div class="col-md-2  col-xs-4 col-sm-4">
-                                <img class="img-responsive" src="${context:ufd_assets/img/he.jpg}" width="120px"/>
+                                <img class="img-responsive" src="${context:ufd_assets/img/dogworld_kennels.png}" width="120px"/>
                             </div>
                             <div class="col-md-2  col-xs-4 col-sm-4">
-                                <img class="img-responsive" src="${context:ufd_assets/img/sw.png}" width="120px" style="margin-top:46px;"/>
+                                <img class="img-responsive" src="${context:ufd_assets/img/ibadan_dogs.png}" width="120px" style="margin-top:46px;"/>
                             </div>
                             <div class="col-md-2  col-xs-4 col-sm-4">
                                 <img class="img-responsive" src="${context:ufd_assets/img/sww.png}" width="120px" style="margin-top:46px;"/>

@@ -12,7 +12,7 @@
                                 <p><i class="fa ion-ios7-help-outline fa-5x text-muted"></i></p>
                                 <h4>Have a Question?</h4>
                                 <p>Ask us any questions concerning our products and services</p>
-                                <a href="javascript:;" class="btn btn-secondary">Get it Answered!</a>
+                                <a t:type="PageLink" t:page="ContactUs" href="#" class="btn btn-secondary">Get it Answered!</a>
                             </div> <!-- /.well -->
 
                             <br/>

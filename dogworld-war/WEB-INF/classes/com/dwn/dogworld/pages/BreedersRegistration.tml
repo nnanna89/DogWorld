@@ -26,7 +26,7 @@
                         </div>
                         <div id="" class="col-sm-8 col-sm-pull-4 layout-main">
                             <h3 class="t-al-center" style="padding-bottom: 30px;"><span class="fa ion-ios7-lightbulb-outline"></span>&nbsp;Are you a Dog Breeder? Register here </h3>
-                            <div class="well text-center"><p>We are building a wide network of breeders around Nigeria. Our goal is to help you sell quality dogs, while we build our pedigree database</p></div>
+                            <div class="well text-center"><p>We are building a wide network of breeders around Nigeria. Our goal is to help you sell quality dogs, while we build a pedigree database for our future</p></div>
                             <form class="form account-form" t:type="form" t:id="registrationForm">
                                  <div class="row">
                                     <div class="col-md-6">

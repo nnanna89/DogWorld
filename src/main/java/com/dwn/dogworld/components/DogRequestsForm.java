@@ -1,5 +1,9 @@
 package com.dwn.dogworld.components;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.apache.tapestry5.Field;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
@@ -8,10 +12,12 @@ import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import com.dwn.dogworld.dal.CrudServiceDAO;
+import com.dwn.dogworld.dal.QueryParameters;
 import com.dwn.dogworld.data.Breed;
 import com.dwn.dogworld.data.Gender;
 import com.dwn.dogworld.data.Location;
 import com.dwn.dogworld.data.RequestStatus;
+import com.dwn.dogworld.entities.Breeder;
 import com.dwn.dogworld.entities.DogRequest;
 import com.dwn.dogworld.utils.EmailNotifications;
 import com.dwn.dogworld.utils.SendEmail;
@@ -72,6 +78,17 @@ public class DogRequestsForm
 		//send email notifications (to dwn admin, customer, and breeders)
 		EmailNotifications emailNotification = new SendEmail();
 		emailNotification.sendDogRequestNotification(dogRequest);
+		
+		//send email to all dog breeders who have the desired breed
+		List<String> breederEmails = crudDao.findWithNamedQuery(
+				Breeder.BY_BREEDS,
+				QueryParameters.with("breed", selectedBreed).parameters());
+		if(breederEmails != null && breederEmails.size() > 0){
+			for(String e : breederEmails){
+				System.out.println("-----------------Breeder Email Address: " + e);
+			}
+		}
+		
 		return null;
 	}
 	

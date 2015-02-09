@@ -1,14 +1,24 @@
 package com.dwn.dogworld.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = Breeder.BY_BREEDS, query="Select b.email from Breeder b where lower(b.breeds) like lower(:breed)")
+})
 @Table(name="breeder")
-public class Breeder {
+public class Breeder implements Serializable {
+	private static final long serialVersionUID = -6176295317720795275L;
+	public static final String BY_BREEDS = "Breeder.byBreeds";
+	
 	
 	private Long id;
 	
@@ -17,7 +27,7 @@ public class Breeder {
 	private String email;
 	private String telephone;
 	private String firstBreedingYear;
-	private String[] breeds;
+	private String breeds;
 	private byte[] logo;
 	
 	public Breeder(){
@@ -25,7 +35,7 @@ public class Breeder {
 	}
 	
 	public Breeder(final String name, final String address, final String email, final String telephone,
-			final String[] breeds, final byte[] logo, final String firstBreedingYear){
+			final String breeds, final byte[] logo, final String firstBreedingYear){
 		this.name = name;
 		this.address = address;
 		this.email = email;
@@ -104,13 +114,13 @@ public class Breeder {
 	/**
 	 * @return the breeds
 	 */
-	public String[] getBreeds() {
+	public String getBreeds() {
 		return breeds;
 	}
 	/**
 	 * @param breeds the breeds to set
 	 */
-	public void setBreeds(String[] breeds) {
+	public void setBreeds(String breeds) {
 		this.breeds = breeds;
 	}
 	/**
