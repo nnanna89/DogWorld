@@ -12,13 +12,18 @@ import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = Breeder.BY_BREEDS, query="Select b.email from Breeder b where lower(b.breeds) like lower(:breed)")
+	@NamedQuery(name = Breeder.BY_BREEDS, query="select b from Breeder b where lower(b.breeds) like lower(:breed)"),
+	@NamedQuery(name = Breeder.BY_NAME, query="select b from Breeder b where lower(b.name) = lower(:breederName)"),
+	@NamedQuery(name = Breeder.BY_EMAIL, query="select b from Breeder b where lower(b.email) = lower(:breederEmail)"),
+	@NamedQuery(name = Breeder.BY_TELEPHONE, query="select b from Breeder b where lower(b.name) = lower(:breederTelephone)")
 })
 @Table(name="breeder")
-public class Breeder implements Serializable {
-	private static final long serialVersionUID = -6176295317720795275L;
+public class Breeder{
+//	private static final long serialVersionUID = -6176295317720795275L;
 	public static final String BY_BREEDS = "Breeder.byBreeds";
-	
+	public static final String BY_NAME = "Breeder.byName";
+	public static final String BY_EMAIL = "Breeder.byEmail";
+	public static final String BY_TELEPHONE = "Breeder.byTelephone";
 	
 	private Long id;
 	

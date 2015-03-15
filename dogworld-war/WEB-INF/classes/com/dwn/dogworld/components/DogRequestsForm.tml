@@ -13,6 +13,7 @@
     <div class="col-sm-6 col-md-5 ">
                             <form t:type="form" class="form account-form" t:id="dogRequestForm">
                             	<t:errors />
+                            	<t:alerts />
                                 <div class="row">
 	                                <h3 class="t-al-center">
 		                                Need a dog? Request one. 

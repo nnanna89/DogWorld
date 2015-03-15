@@ -28,7 +28,7 @@ public class HibernateCrudServiceDAO implements CrudServiceDAO {
 
 	public <T> T create(T t) {
 		session.persist(t);
-//		session.flush();
+		session.flush();
 		session.refresh(t);
 		return t;
 	}

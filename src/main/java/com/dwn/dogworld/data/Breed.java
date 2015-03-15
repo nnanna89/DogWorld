@@ -17,8 +17,8 @@ public class Breed extends AbstractSelectModel {
 		
 		options.add(new OptionModelImpl("Basenji"));
 		options.add(new OptionModelImpl("Boer Boel"));
-		options.add(new OptionModelImpl("Bulldog"));
-		options.add(new OptionModelImpl("Bullmastiff"));
+		options.add(new OptionModelImpl("Bull dog"));
+		options.add(new OptionModelImpl("Bull Mastiff"));
 
 		options.add(new OptionModelImpl("Chow Chow"));
 		options.add(new OptionModelImpl("Chihuahua"));

@@ -57,4 +57,8 @@ public class Layout
     Object onBreedersReg(){
     	return "BreedersRegistration";
     }
+    
+    Object onBreedInformation(){
+    	return "BreedInformation";
+    }
 }

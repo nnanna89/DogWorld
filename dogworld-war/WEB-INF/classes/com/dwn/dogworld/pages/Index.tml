@@ -83,16 +83,19 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2 col-xs-4 col-sm-4">
-                                <img class="img-responsive" src="${context:ufd_assets/img/doglord_kennels.jpg}" width="120px"/>
+                                <img class="img-responsive" src="${context:ufd_assets/img/doglord_kennels.jpg}" width="120px" title="Doglord Kennels"/>
                             </div>
                             <div class="col-md-2  col-xs-4 col-sm-4">
-                                <img class="img-responsive" src="${context:ufd_assets/img/dogworld_kennels.png}" width="120px"/>
+                                <img class="img-responsive" src="${context:ufd_assets/img/dogworld_kennels.png}" width="120px" title="Dogworld Kennels"/>
                             </div>
                             <div class="col-md-2  col-xs-4 col-sm-4">
-                                <img class="img-responsive" src="${context:ufd_assets/img/ibadan_dogs.png}" width="120px" style="margin-top:46px;"/>
+                                <img class="img-responsive" src="${context:ufd_assets/img/ibadan_dogs.png}" width="120px" title="Trojan Dogs"/>
                             </div>
                             <div class="col-md-2  col-xs-4 col-sm-4">
-                                <img class="img-responsive" src="${context:ufd_assets/img/sww.png}" width="120px" style="margin-top:46px;"/>
+                                <img class="img-responsive" src="${context:ufd_assets/img/dw_kennels.jpg}" width="120px" title="DogWorld Kennels"/>
+                            </div>
+                            <div class="col-md-2  col-xs-4 col-sm-4">
+                                <img class="img-responsive" src="${context:ufd_assets/img/wlk_kennels.jpg}" width="120px" title="WLK Kennels"/>
                             </div>
                         </div>
                     </div>

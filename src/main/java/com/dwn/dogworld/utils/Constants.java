@@ -9,7 +9,7 @@ package com.dwn.dogworld.utils;
  */
 public class Constants {
 	//email constants
-	public static final String EMAIL_SIGNATURE = "Thank you.<br><br>Warm Regards,<br>DogWorld Nigeria Support";
+	public static final String EMAIL_SIGNATURE = "<br>Thank you.<br><br>Warm Regards,<br>DogWorld Nigeria Support";
 	public static final String EMAIL_DATE_FORMAT = "EEE, d MMM yyyy h:mm a";
 	public static final String EMAIL_PASSWORD = "Nnanna2090";
 	public static final String SENDER_EMAIL = "info@dogworldnigeria.com";

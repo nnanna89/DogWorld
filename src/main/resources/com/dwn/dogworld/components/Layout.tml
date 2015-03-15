@@ -26,21 +26,37 @@
 		        <nav class="collapse navbar-collapse" role="navigation">
 		            <ul class="nav navbar-nav navbar-left menu-c">
 		            	<a href="index" class="navbar-brand navbar-brand-img"></a> 
-		            	   
-		                <li>
-		                    <a t:type="EventLink" t:event="dogRequest" href="#"><i class="ion-ios7-lightbulb-outline fa fa-md"></i> Dog Request</a>
+		            	<li>
+		                    <a t:type="EventLink" t:event="dogRequest" href="#"><i class="fa ion-ios7-paw"></i> Request a Dog</a>
 		                </li>
-		                <!--<li>
-		                    <a t:type="EventLink" t:event="availableDogs" href="#"><i class="ion-android-search fa fa-md"></i> Available Dogs</a>
-		                </li>-->
 		                <li>
-		                    <a t:type="EventLink" t:event="contactUs" href="#"><i class="ion-android-mail fa fa-mda"></i> Contact Us</a>
+		                    <a t:type="EventLink" t:event="breedersReg" href="#"><i class="fa ion-ios7-personadd"></i> Register as Breeder</a>
 		                </li>
-		                <!--<li>
-		                    <a t:type="EventLink" t:event="addDog" href="#"><i class="ion-upload fa fa-md"></i> Register Dog</a>
-		                </li>-->
 		                <li>
-		                    <a t:type="EventLink" t:event="breedersReg" href="#"><i class="ion-android-mail fa fa-mda"></i> Breeders</a>
+		                    <a t:type="EventLink" t:event="breedInformation" href="#"><i class="fa ion-ios7-search-strong"></i> Browse Dog Breeds</a>
+		                </li>
+		                <li>
+		                    <a t:type="EventLink" t:event="contactUs" href="#"><i class="fa fa-cogs"></i> Contact Us</a>
+		                </li>
+		            </ul>
+		            <ul class="nav navbar-nav navbar-right">    
+		                <li class="dropdown navbar-profile">
+		                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+		                        <i class="fa ion-android-drawer" style="margin-top: 28px; font-size: 18px;"></i><span> Login</span>
+		                    </a>
+		                    <ul class="dropdown-menu" role="menu">
+		                        <!--<li class="divider"></li>-->
+		                        <li>
+		                            <a href="#">
+		                                <i class="fa ion-social-facebook "></i> 
+		                                &nbsp;&nbsp;Facebook
+		                            </a>
+		                            <a href="#">
+		                                <i class="fa ion-social-twitter"></i> 
+		                                &nbsp;&nbsp;Twitter
+		                            </a>
+		                        </li>
+		                    </ul>
 		                </li>
 		            </ul>
 		        </nav>

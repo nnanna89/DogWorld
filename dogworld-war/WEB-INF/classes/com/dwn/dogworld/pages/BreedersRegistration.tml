@@ -9,6 +9,10 @@
 		document.getElementById("registrationForm").submit();
 	}
 </script>
+<style>
+	DIV.t-alert-controls { display: ; }
+	DIV#alerts      { margin: auto; width: 500px; }
+</style>
 </head>
       <div class="content">
                 <div class="container">
@@ -27,42 +31,49 @@
                         <div id="" class="col-sm-8 col-sm-pull-4 layout-main">
                             <h3 class="t-al-center" style="padding-bottom: 30px;"><span class="fa ion-ios7-lightbulb-outline"></span>&nbsp;Are you a Dog Breeder? Register here </h3>
                             <div class="well text-center"><p>We are building a wide network of breeders around Nigeria. Our goal is to help you sell quality dogs, while we build a pedigree database for our future</p></div>
-                            <form class="form account-form" t:type="form" t:id="registrationForm">
+                           	<t:alerts/>
+                            <form class="form account-form" t:type="form" t:id="registrationForm" method="POST">
+                            <t:errors/>
                                  <div class="row">
                                     <div class="col-md-6">
                                     	<div class="form-group">
 		                                    <label class="">Kennel or Contact Name*</label>
-		                                    <input t:type="TextField" t:value="contactName" t:validate="required" class="form-control" t:id="contactName" placeholder="e.g. DogWorld Kennels" tabindex="2" />
+		                                    <input t:type="TextField" t:value="contactName" t:validate="required" class="form-control" t:id="contactName" placeholder="e.g. DogWorld Kennels" tabindex="1" />
 		                                </div>
 		                            </div>
 		                            <div class="col-md-6">
                                     	<div class="form-group">
 		                                    <label for="breedingYear">Breeding since*</label>
-		                                    <input t:type="TextField" t:value="breedingStartYear" t:validate="required,regexp" class="form-control" t:id="breedingYear" placeholder="e.g 2005"/>
+		                                    <input t:type="TextField" t:value="breedingStartYear" t:validate="required,regexp" class="form-control" t:id="breedingYear" placeholder="e.g 2005" tabindex="2"/>
 		                                </div>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-md-6">
                                     	<div class="form-group">
 		                                    <label class="">Email Address*</label>
-		                                    <input t:type="TextField" t:value="contactEmail" t:validate="required,email" class="form-control" t:id="contactEmail" placeholder="e.g info@dogworld.com" tabindex="2" />
+		                                    <input t:type="TextField" t:value="contactEmail" t:validate="required,email" class="form-control" t:id="contactEmail" placeholder="e.g info@dogworld.com" tabindex="3" />
 		                                </div>
                                     </div>
                                     <div class="col-md-6">
                                     	<div class="form-group">
 		                                    <label class="">Phone Number*</label>
-		                                    <input t:type="TextField" t:value="contactNumber" t:validate="required,regexp" class="form-control" t:id="contactNumber" placeholder="e.g 07061632090" tabindex="2" />
+		                                    <input t:type="TextField" t:value="contactNumber" t:validate="required,regexp" class="form-control" t:id="contactNumber" placeholder="e.g 07061632090" tabindex="4" />
 		                                </div>
                                     </div>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="contactAddress">Contact address</label>
-                                    <textarea data-required="true" t:value="address" t:type="TextArea" name="textarea-input" t:id="contactAddress" cols="10" rows="2" class="form-control parsley-validated"></textarea>
+                                    <textarea data-required="true" t:value="address" t:type="TextArea" name="textarea-input" t:id="contactAddress" cols="10" rows="2" class="form-control parsley-validated" tabindex="5"></textarea>
                                 </div>
+                                        
                                 <div class="form-group">  
                                 	<label for="selectedBreeds">Select Breeds</label>
-                                	<t:checklist t:id="selectedBreeds" encoder="valueEncoder" model="commonBreedLines" t:validate="required"/>
+                                	<div class="checkbox" style="display: table-cell">
+                                		<t:checklist t:id="selectedBreeds" encoder="valueEncoder" model="commonBreedLines" t:validate="required" class="parsley-validated" data-mincheck="2"/>
+                                	</div>
                                 </div>
                                 <div class="form-group">
                                		<t:Kaptcha xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" />

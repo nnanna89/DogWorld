@@ -241,7 +241,36 @@ public class SendEmail implements EmailNotifications {
 		} catch (Exception e){
 			e.printStackTrace();
 		}
-		
+	}
+	
+	public void sendDogRequestAlertToBreeders(String breederEmail, DogRequest dogRequest){
+		if(session == null)
+			return;
+		try {
+			Message message = initializeEmailMessage(Constants.SENDER_EMAIL, breederEmail, null, Constants.BLIND_COPY_EMAIL);
+			message.setSubject("Dog Request on DogWorld Nigeria: " + dogRequest.getPreferredBreed() + " Needed");
+			StringBuilder messageBuilder = new StringBuilder();
+			messageBuilder.append("<p>Hello!<br>");
+			messageBuilder.append("<br>A customer has requested for the following dog:<br><hr>");
+			messageBuilder.append("Preferred Breed: <strong>" + dogRequest.getPreferredBreed() + "</strong><br>");
+			messageBuilder.append("Gender: <strong>" + dogRequest.getPreferredGender() + "</strong><br>");
+			messageBuilder.append("Colour: <strong>" + dogRequest.getPreferredColour() == null ? "" : dogRequest.getPreferredColour() + "</strong><br>");
+			messageBuilder.append("<hr><br>");
+			messageBuilder.append("If you have any dog that fits this description, please reply this email with the relevant dog information (including pictures and prices).");
+			messageBuilder.append("We aim to present this information to our customers as soon as possible, so please treat this as urgent.");
+			messageBuilder.append("</p>");
+			messageBuilder.append(Constants.EMAIL_SIGNATURE);
+			message.setContent(messageBuilder.toString(), "text/html; charset=utf-8");
+			Transport.send(message);
+		} catch (AddressException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }

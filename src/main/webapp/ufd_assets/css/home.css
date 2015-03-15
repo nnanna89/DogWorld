@@ -3094,3 +3094,25 @@
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.175); }
 .navbar.white .navbar-collapse .navbar-nav > li ul.dropdown-menu li a {
     padding: 8px 18px; }
+
+.dog-thumbnail{
+    text-align: center!important;
+    border: 1px #ccc solid!important;
+}
+.dog-thumb-link{
+    font-size: 10px; 
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.after-dg-row{
+    margin-top: 20px;
+}
+
+.sec-font{
+    font-size: 14px;
+}
+
+.dog-info-header{
+    color:#327704;
+}

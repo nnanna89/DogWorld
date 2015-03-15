@@ -3,3 +3,9 @@ CONNECT USER SA
 SET AUTOCOMMIT FALSE
 SET AUTOCOMMIT TRUE
 SET AUTOCOMMIT FALSE
+INSERT INTO DOGREQUEST VALUES(4,'nnanna.madu@gmail.com','07061632090','Bull dog','white','MALE',1,'testing','Adamawa','NOT_PROCESSED')
+COMMIT
+INSERT INTO DOGREQUEST VALUES(5,'nnanna.madu@gmail.com','07061632090','Bull dog','red','ANY',1,'testing','Benue','NOT_PROCESSED')
+COMMIT
+INSERT INTO DOGREQUEST VALUES(6,'nnanna.madu@gmail.com','07061632090','Boer Boel','brown','MALE',1,'testing','Bauchi','NOT_PROCESSED')
+COMMIT

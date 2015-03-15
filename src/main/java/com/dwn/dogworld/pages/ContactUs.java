@@ -43,7 +43,6 @@ public class ContactUs
 	
 	@CommitAfter
 	Object onSuccess(){
-		System.out.println("--------------------Successful!!!--------------------");
 		customerInquiry = new CustomerInquiry(contactName, subject, contactEmail, contactNumber, message);
 		crudDao.create(customerInquiry);
 		

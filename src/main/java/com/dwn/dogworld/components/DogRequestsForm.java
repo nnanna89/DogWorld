@@ -3,8 +3,12 @@ package com.dwn.dogworld.components;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.apache.tapestry5.Field;
 import org.apache.tapestry5.SelectModel;
+import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.alerts.Duration;
+import org.apache.tapestry5.alerts.Severity;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
@@ -31,6 +35,8 @@ import com.dwn.dogworld.utils.SendEmail;
 
 public class DogRequestsForm
 {
+	Logger logger = Logger.getLogger(DogRequestsForm.class);
+	
 	@Component
 	private Form dogRequestForm;
 
@@ -69,6 +75,9 @@ public class DogRequestsForm
 	@Inject
 	private CrudServiceDAO crudDao;
 	
+	@Inject
+	private AlertManager alertManager;
+	
 	@CommitAfter
 	Object onSuccess(){
 		newRequest = new DogRequest(selectedBreed, genderSelect.name(), dogColor, 1, description, 
@@ -76,16 +85,21 @@ public class DogRequestsForm
 		dogRequest = crudDao.create(newRequest);
 		
 		//send email notifications (to dwn admin, customer, and breeders)
-		EmailNotifications emailNotification = new SendEmail();
+		SendEmail emailNotification = new SendEmail();
 		emailNotification.sendDogRequestNotification(dogRequest);
 		
-		//send email to all dog breeders who have the desired breed
-		List<String> breederEmails = crudDao.findWithNamedQuery(
+		//show alert
+		alertManager.alert(Duration.TRANSIENT, Severity.SUCCESS, "Your request has been received. Please see your email for more details.");
+		
+		//send email to all breeders who deal in the selected breed
+		List<Breeder> breeders = crudDao.findWithNamedQuery(
 				Breeder.BY_BREEDS,
-				QueryParameters.with("breed", selectedBreed).parameters());
-		if(breederEmails != null && breederEmails.size() > 0){
-			for(String e : breederEmails){
-				System.out.println("-----------------Breeder Email Address: " + e);
+				QueryParameters.with("breed", "%" + selectedBreed + "%").parameters());
+		
+		if(breeders != null && breeders.size() > 0){
+			for(Breeder breeder : breeders){
+				logger.info("-----------------Breeder Email Address: " + breeder.getEmail());
+				emailNotification.sendDogRequestAlertToBreeders(breeder.getEmail(), dogRequest);
 			}
 		}
 		

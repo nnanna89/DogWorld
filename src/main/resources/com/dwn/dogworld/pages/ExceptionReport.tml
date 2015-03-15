@@ -1,0 +1,11 @@
+<html t:type="layout" t:title="DogWorld Nigeria"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+		<body>
+			<h2>Oops! Something went wrong...</h2>
+			
+			<p>
+				Not to worry. Click <t:pagelink page="index">here</t:pagelink> to roll back.
+			</p>
+		</body>
+</html>

@@ -3280,3 +3280,10 @@ background: #347C04;
     width: 100%;
     
 }
+.inline-cbmanin{
+    display: table-cell!important;
+}
+.inline-cbc{
+    display: table-cell!important; 
+    padding-left: 35px;
+}
